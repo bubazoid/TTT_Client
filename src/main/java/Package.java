@@ -1,7 +1,7 @@
 /**
  * Created by Sergey on 21.10.2016.
  */
-public class Package extends Object implements java.io.Serializable{
+public class Package implements java.io.Serializable{
     public static final int MESSAGE = 1;
     public static final int STEP = 2;
     public static final int CLOSE_GAME = 3;

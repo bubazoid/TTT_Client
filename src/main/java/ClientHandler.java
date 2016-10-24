@@ -15,7 +15,6 @@ public class ClientHandler extends ChannelInboundHandlerAdapter {
                     System.out.println(pack.getMessage());
                     break;
                 case Package.STEP:
-                    System.out.println("Ваш оппонент походил " + pack.getStep());
                     Client.makeOpponentStep(pack.getStep());
                     break;
                 case Package.YOUR_STEP:

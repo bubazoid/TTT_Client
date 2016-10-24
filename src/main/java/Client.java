@@ -64,7 +64,6 @@ public class Client {
                 }
             }
         });
-
     }
 
     private static void startNewGame() {
@@ -87,9 +86,9 @@ public class Client {
         }
     }
 
-    public static void sendStep(int i){
-        if (channel != null){
-            channel.writeAndFlush(new Package(Package.STEP,i));
+    public static void sendStep(int i) {
+        if (channel != null) {
+            channel.writeAndFlush(new Package(Package.STEP, i));
         }
         mainFrame.setInfo("");
     }
@@ -107,7 +106,7 @@ public class Client {
 
     public static void closeGame(String message) {
         desk.unlockButtons(false);
-        if (channel != null){
+        if (channel != null) {
             channel.close();
             channel = null;
         }
@@ -115,16 +114,22 @@ public class Client {
         mainFrame.setInfo("Игра окончена");
         mainFrame.unlockMarkButton(true);
     }
-    public static void exit(){
-        if (channel != null){
+
+    public static void exit() {
+        if (channel != null) {
             try {
                 channel.close().sync();
+
             } catch (InterruptedException e) {
                 e.printStackTrace();
-            } finally {
-                group.shutdownGracefully();
             }
         }
+        try {
+            group.shutdownGracefully().sync();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.exit(0);
     }
 }
 

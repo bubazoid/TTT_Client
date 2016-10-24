@@ -35,6 +35,7 @@ public class MainFrame extends JFrame {
             public void windowClosing(WindowEvent e) {
                 Client.exit();
             }
+
         });
         close.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
